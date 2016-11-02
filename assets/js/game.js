@@ -124,6 +124,7 @@ $("#in-play-target").on("click", function(){
         closeSlots();
         //reset the game state so a new card can be drawn
         gameState = "ready to end turn";
+        $("#end-turn-btn").show();
     };
 
     //update the game state display
@@ -167,7 +168,7 @@ $("#discard").on("click", function(){
         closeSlots();
         //reset the game state so a new card can be drawn
         gameState = "ready to end turn";
-
+        $("#end-turn-btn").show();
     };
 
     //update the game state display
@@ -181,7 +182,6 @@ $(document).on("click", ".card", function(){
     //if no card in the on-deck circle, player select or deselect card
     //if selected, move it to the on-deck circle
 })
-
 
 
 
@@ -199,6 +199,7 @@ $("#end-turn-btn").on("click", function(){
 
     $("#discard").empty();
     gameState = "draw card";
+    $(this).hide();
     };
 })
 
@@ -206,4 +207,5 @@ $("#end-turn-btn").on("click", function(){
 // -- RUN THE GAME --- 
 //show the game state
 $("#game-state").text(gameState);
+$("#end-turn-btn").hide();
 

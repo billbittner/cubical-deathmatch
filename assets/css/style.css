@@ -63,6 +63,10 @@
 /*nothing for now, because this is just a target for the on-deck cards when they are drawn */
 }
 
+#end-turn-btn {
+    margin: 50px 20px 50px 20px;
+}
+
 
 #front-row, #middle-row, #back-row {
     clear: both;

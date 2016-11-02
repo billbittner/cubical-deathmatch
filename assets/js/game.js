@@ -59,6 +59,20 @@ function createCard(card){
         return cardDiv;
 };
 
+function openSlots(){
+    $("#in-play-target").removeClass("closed-slot");
+    $("#in-play-target").addClass("open-slot");
+    $(".card-slot").removeClass("closed-slot");
+    $(".card-slot").addClass("open-slot");
+}
+
+function closeSlots(){
+    $("#in-play-target").removeClass("open-slot");
+    $("#in-play-target").addClass("closed-slot");
+    $(".card-slot").removeClass("open-slot");
+    $(".card-slot").addClass("closed-slot");
+}
+
 //create a random deck
 player1.cards.deck = dealDeck(creatureBank, 5, resourceBank, 5, spellBank, 5);
 
@@ -69,21 +83,17 @@ $("#deck").on("click", function(){
         player1.cards.onDeck.push(player1.cards.deck[0]);
         //remove the card you just pushed from the deck
         player1.cards.deck.shift();
-        //console log the whole cards object for testing
-        console.log(player1.cards);
-        //switch the game state
-        gameState = "card on deck";
 
         //create the on deck card
         var newCard = createCard(player1.cards.onDeck[0]);
         console.log(player1.cards.onDeck[0]);
         //place the ondeck card
         $("#on-deck-slot").append(newCard);
+
         //show where card can be placed
-        $("#in-play-target").removeClass("closed-slot");
-        $("#in-play-target").addClass("open-slot");
-        $(".card-slot").removeClass("closed-slot");
-        $(".card-slot").addClass("open-slot");
+        openSlots();
+        //switch the game state
+        gameState = "card on deck";
     };
 
     //update the game state display
@@ -109,14 +119,11 @@ $("#in-play-target").on("click", function(){
         console.log(newCard);
         //place the ondeck card
         $("#in-play-target").before(newCard);
-        //show where card can be placed
-        $("#in-play-target").removeClass("open-slot");
-        $("#in-play-target").addClass("closed-slot");
-        $(".card-slot").removeClass("open-slot");
-        $(".card-slot").addClass("closed-slot");
-
+        
+        //turn off the open-slot indicators
+        closeSlots();
         //reset the game state so a new card can be drawn
-        gameState = "draw card";
+        gameState = "ready to end turn";
     };
 
     //update the game state display
@@ -140,12 +147,60 @@ $("#discard").on("click", function(){
     //if a card is on deck then..
     if (gameState === "card on deck"){
         //place the on-deck card in the discard pile
+        //store the on deck card in a temporary variable
+        var tempCardHolder;
+        tempCardHolder = player1.cards.onDeck[0];
+        //push the card from the deck to played cards & remove the card from the deck
+        player1.cards.discardPile.push(player1.cards.onDeck[0]);
+        player1.cards.onDeck.shift();
+
+        //empty the on-deck area
+        $("#on-deck-slot").empty();
+
+        //create the new card in the in-play area
+        var newCard = createCard(tempCardHolder);
+        console.log(newCard);
+        //place the ondeck card
+        $("#discard").append(newCard);
+        
+        //turn off the open-slot indicators
+        closeSlots();
+        //reset the game state so a new card can be drawn
+        gameState = "ready to end turn";
+
     };
 
     //update the game state display
     $("#game-state").text(gameState);
 });
 
+
+
+//all current cards need to be able to be moved around
+$(document).on("click", ".card", function(){
+    //if no card in the on-deck circle, player select or deselect card
+    //if selected, move it to the on-deck circle
+})
+
+
+
+
+$("#end-turn-btn").on("click", function(){
+    if (gameState === "ready to end turn"){
+    //this will trigger when the player is done with their turn
+    //at this point, we will go through and perform all the necessary actions
+        //remove the card that is displayed in the discard pile
+        //carry out all attacks
+        //carry out all passive abilities
+        //carry out all defenses
+        //etc.
+    //we will also update the server so it can pass the baton to the other player
+    //other player will take down the information to update their version of the game and then perform their turn.
+
+    $("#discard").empty();
+    gameState = "draw card";
+    };
+})
 
 
 // -- RUN THE GAME --- 

@@ -1,0 +1,105 @@
+
+.header-wrapper {
+    width: 80%;
+    margin: 20px 10% 20px 10%;
+    border: 1px dashed grey;
+    overflow: auto;
+}
+
+.header-div {
+    float: left;
+}
+
+
+/*main content wrapper */
+.main-content-wrapper {
+    clear: both;
+    margin: 20px 10% 20px 10%;
+    overflow: auto;
+    border: 1px dashed grey;
+}
+
+/*lobby content*/
+.lobby-content {
+    /*background: grey;*/
+    width: 26%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 1px dashed grey;
+}
+
+.lobby-content-left {
+    float: left;
+    
+}
+
+.lobby-content-center {
+    float: left;
+    margin: 0 0 0 5%;
+}
+
+.lobby-content-right {
+    float: right;
+}
+
+
+/*battle content*/
+.battle-content {
+    margin: auto;
+    background-color: orange;
+    overflow: auto;
+}
+
+/*these are all the slots that need basic styles */
+ #deck, .card-slot, #discard, .card, #in-play-target {
+    width: 126px;
+    height: 176px;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+}
+
+#on-deck-slot {
+/*nothing for now, because this is just a target for the on-deck cards when they are drawn */
+}
+
+
+#front-row, #middle-row, #back-row {
+    clear: both;
+}
+
+#deck {
+    background-color: green;
+}
+
+#discard {
+    background-color: grey;
+}
+
+.card {
+    background-color: white;
+}
+
+.card-text {
+    font-size: xx-small;
+    color: darkslategrey;
+}
+
+.not-selected {
+    border: 2px solid lightgray;
+}
+
+.selected {
+    border: 2px solid yellow; 
+    box-shadow: 10px 10px 5px #888888;   
+}
+
+/*styling for slots that are open to receive a card */
+.open-slot {
+    border: 2px dashed yellow;
+}
+
+.closed-slot {
+    border: 2px solid grey;
+}
+

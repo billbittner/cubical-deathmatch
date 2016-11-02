@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cubicle Deathmatch</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+       <div class="header-wrapper padding">
+           <div id="logo" class="header-div">
+                <p>Cubicle Deathmatch</p>
+           </div>
+            <div id="your-name" class="header-div">
+           </div>
+       </div>
+    </header>
+    <section class="main-content-wrapper" id="lobby">
+        <div class="lobby-content lobby-content-left padding">
+            <div class="players-online">
+                <p class="online-player">Player 1</p>
+            </div>
+        </div>
+        <div class="lobby-content lobby-content-center padding">
+            <p id="game-state">test</p>
+        </div>
+        <div class="lobby-content lobby-content-right padding">
+            <div class="players-offline">
+                <p class="offline-player">Player 4</p>
+            </div>
+        </div>
+    </section>
+    <section class="main-content-wrapper" id="battle">
+        <div class="battle-content">
+            <div id="front-row">
+                <div id="in-play-target" class="closed-slot"></div>
+            </div>
+            <div id="middle-row">
+                <div id="in-hand1" class="card-slot closed-slot"></div>
+                <div id="in-hand2" class="card-slot closed-slot"></div>
+                <div id="in-hand3" class="card-slot closed-slot"></div>
+                <div id="in-hand4" class="card-slot closed-slot"></div>
+            </div>
+            <div id="back-row">
+                <div id="deck" class=""></div>
+                <div id="on-deck-slot"></div>
+                <div id="discard" class="card-slot closed-slot"></div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div>
+        </div>
+    </footer>
+    <script src="assets/js/cards.js"></script>
+    <script src="assets/js/game.js"></script>
+</body>
+</html>

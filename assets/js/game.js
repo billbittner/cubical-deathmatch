@@ -88,7 +88,7 @@ $("#deck").on("click", function(){
         var newCard = createCard(player1.cards.onDeck[0]);
         console.log(player1.cards.onDeck[0]);
         //place the ondeck card
-        $("#on-deck-slot").append(newCard);
+        $("#deck").append(newCard);
 
         //show where card can be placed
         openSlots();
@@ -112,7 +112,7 @@ $("#in-play-target").on("click", function(){
         player1.cards.onDeck.shift();
 
         //empty the on-deck area
-        $("#on-deck-slot").empty();
+        $("#deck").empty();
 
         //create the new card in the in-play area
         var newCard = createCard(tempCardHolder);
@@ -156,7 +156,7 @@ $("#discard").on("click", function(){
         player1.cards.onDeck.shift();
 
         //empty the on-deck area
-        $("#on-deck-slot").empty();
+        $("#deck").empty();
 
         //create the new card in the in-play area
         var newCard = createCard(tempCardHolder);
